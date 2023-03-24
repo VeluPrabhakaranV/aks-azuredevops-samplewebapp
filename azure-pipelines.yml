@@ -1,13 +1,4 @@
 # ASP.NET
-- task: Docker@2
-  inputs:
-    containerRegistry: 'mywebapp1110'
-    repository: 'webapp'
-    command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-# Build and test ASP.NET projects.
-# Add steps that publish symbols, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
 
 trigger:
 - main
@@ -38,3 +29,13 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'mywebapp1110'
+    repository: 'webapp'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
